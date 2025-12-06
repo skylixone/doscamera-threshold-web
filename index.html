@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>DOS Image Dithering</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <input type="file" id="imageInput" accept="image/*" style="display:none;">
+    <canvas id="canvas"></canvas>
+    <div id="controls">
+        <button id="uploadBtn">Upload Image</button>
+        <div class="select-wrapper">
+            <select id="resolutionSelect">
+                <option value="960">960px</option>
+                <option value="640" selected>640px</option>
+                <option value="480">480px</option>
+                <option value="320">320px</option>
+            </select>
+        </div>
+        <div class="select-wrapper">
+            <select id="paletteSelect">
+                <option value="VGA">VGA (16-color)</option>
+                <option value="CGA_CYAN">CGA Cyan</option>
+                <option value="CGA_RGBY">CGA RGBY</option>
+                <option value="AMBER">Amber</option>
+                <option value="AMBER_FIRE">Amber Fire</option>
+                <option value="GREEN_PHOSPHOR">Green Phosphor</option>
+                <option value="GREEN_STEP">Green Gradient</option>
+                <option value="GRAYSCALE">Grayscale</option>
+            </select>
+        </div>
+        <div id="version">v1.0.0</div>
+    </div>
+    <div id="exportControls">
+        <div class="select-wrapper">
+            <select id="exportScaleSelect">
+                <option value="1" selected>1×</option>
+                <option value="2">2×</option>
+                <option value="4">4×</option>
+                <option value="8">8×</option>
+            </select>
+        </div>
+        <button id="snapshotBtn">Save Image</button>
+    </div>
+
+    <script src="palette.js"></script>
+    <script src="dither.js"></script>
+    <script src="camera.js"></script>
+</body>
+</html>

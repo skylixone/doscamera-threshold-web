@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border:none;
+}
+
+body {
+    background: #000;
+    font-family: 'Courier New', monospace;
+    color: #aaa;
+    overflow: hidden;
+    touch-action: none;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    border: none;
+    transition: none;
+}
+
+canvas.fit-to-view {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    cursor: zoom-in;
+}
+
+canvas.real-pixels {
+    width: auto;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: none;
+    max-height: none;
+    cursor: zoom-out;
+}
+
+#controls {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    height: fit-content;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border: none;
+    z-index: 10;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+#exportControls {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    height: fit-content;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+    border: none;
+    z-index: 11;
+    pointer-events: none;
+}
+
+#exportControls > * {
+    pointer-events: auto;
+}
+
+button, select {
+    background: rgba(0, 0, 0, 0.4);
+    color: #FFF;
+    border-radius: 32px;
+    border: 2px solid rgba(255, 255, 255, 0.1); 
+    padding: 12px 20px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+    white-space: nowrap;
+    height:fit-content;
+    width:fit-content;
+}
+
+
+button:active {
+    background: #333;
+}
+
+select {
+    min-width: 120px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 40px;
+}
+
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.select-wrapper::after {
+    content: '⌵';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    font-size: 20px;
+    font-weight: 800;
+    transform: translateY(-16px);
+    pointer-events: none;
+    color: #FFF;
+    transition: transform 0.4s ease-in-out;
+}
+
+select:focus {
+    outline: none;
+    background: rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.select-wrapper:focus-within::after {
+    transform: translateY(-8px) rotate(180deg);
+}
+
+#fps {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    color: #0f0;
+    font-size: 14px;
+    opacity: 0.3;
+    z-index: 10;
+    pointer-events: none;
+}
+
+#version {
+    color: #888;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+#snapshotBtn {
+    box-shadow: 0px 5px 15px 0 rgba(76, 144, 255, 0.67);
+    animation: mymove 5s infinite;
+    animation-timing-function: ease-in;
+}
+
+@keyframes mymove {
+  50% {box-shadow: 0px -3px 15px 0 rgba(14, 40, 80, 0.33);}
+}
